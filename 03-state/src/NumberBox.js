@@ -3,7 +3,7 @@ import React from 'react';
 //extends means inheir
 export default  class NumberBox extends React.Component {
     state={
-        'count': 10
+        'count': this.props.initialValue
     }
     //render() function must have
     //whatever JSX return from render function is its output

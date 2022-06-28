@@ -1,11 +1,12 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import NumberBox from './NumberBox'
 
 function App() {
   return (
-    <div>
-      <NumberBox/>
+    <div> 
+      <NumberBox initialValue={10}/>
+      <NumberBox initialValue={-10}/>
     </div>
   );
 }

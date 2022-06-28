@@ -29,7 +29,7 @@ export default class Dice extends React.Component{
                 'height': '50px',
                 'padding': '2px',
                 'textAlign': 'center',
-                'backgroundColor':  this.bgColor()
+                'backgroundColor': this.bgColor()
             }}>
                 {this.state.number}
             </div>
