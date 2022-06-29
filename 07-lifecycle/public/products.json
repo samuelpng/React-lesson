@@ -1,0 +1,12 @@
+[
+    {
+        "_id": 1,
+        "name": "ACME Anvil",
+        "cost": 100
+    },
+    {
+        "_id": 2,
+        "name": "Howdy hat",
+        "cost": 150
+    }
+]

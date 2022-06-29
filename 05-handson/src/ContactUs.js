@@ -5,7 +5,8 @@ export default class ContactUs extends React.Component {
         name: '',
         enquiries: '',
         country: '',
-        contact: []
+        contact: [],
+        hasSubmitted: false
     }
 
     updateName=(event)=>{
@@ -42,7 +43,7 @@ export default class ContactUs extends React.Component {
 
     updateContact=(event)=>{
 
-        if (this.state.fruits.include(event.target.value)){
+        if (this.state.contact.includes(event.target.value)){
             //how to remove from an array
             //1. Clone the array
             let cloned = this.state.contact.slice();
@@ -50,10 +51,11 @@ export default class ContactUs extends React.Component {
             let indexToRemove = -1;
             for (let i=0; i < this.state.contact.length; i++){
                 if (this.state.contact[i] === event.target.value){
-                    indexToRemove [i];
+                    indexToRemove = i;
                     break;
                 }
             }
+            cloned.splice(indexToRemove, 1);
             //3. replace the cloned array
             this.setState({
                 contact : cloned
@@ -77,7 +79,7 @@ export default class ContactUs extends React.Component {
     //     let cloned = [...this.state.contact, event.target.value]
     //     //3. Set the cloned array back into the state
     //     this.setState({
-    //         fruits : cloned
+    //         contact : cloned
     //     })
     // }
 
@@ -87,6 +89,28 @@ export default class ContactUs extends React.Component {
         Enquiry Type: ${this.state.enquiries}
         Country: ${this.state.country}
         Preferred Contact Method: ${this.state.contact}`)
+    }
+
+    getNameError=()=>{
+        if (this.state.name<3){
+            return "The name must consist of 3 or more characters"
+        } else if (this.state.name > 20){
+            return "The name must not exceed 20 characters"
+        }else{
+            return null
+        }
+    }
+
+    submit=()=>{
+
+        this.setState({
+            hasSubmitted : true
+        })
+
+        //check if there is no error
+        if (!this.getNameError()){
+            alert('All data is ok!')
+        }
     }
 
     // updateFormField = (event) => {
@@ -105,6 +129,7 @@ export default class ContactUs extends React.Component {
                     value = {this.state.name}
                     onChange={this.updateName}
                     ></input>
+                    {this.getNameError()&&this.state.hasSubmmited?<span className="error">{this.getNameError()}</span>:""}
                 </div>
                 <div>
                     <label>Enquiries:</label>
@@ -147,9 +172,10 @@ export default class ContactUs extends React.Component {
                     <input type="checkbox" name="contact" value="email" checked={this.state.contact.includes('email')} onChange={this.updateContact}/>Email
                     <input type="checkbox" name="contact" value="phone" checked={this.state.contact.includes('phone')} onChange={this.updateContact}/>Phone Number
                     <input type="checkbox" name="contact" value="slowmail" checked={this.state.contact.includes('slowmail')} onChange={this.updateContact}/>Slow Mail
+                    
                 </div>
                 </div>
-                <button onClick={this.clickSubmit}>Submit</button>
+                <button onClick={this.submit}>Submit</button>
             </div>
         )
     }
