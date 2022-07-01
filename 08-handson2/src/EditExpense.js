@@ -17,7 +17,7 @@ export default function EditExpense(props) {
                             value={props.modifiedExpenseCost}
                             onChange={props.updateFormField} />
                     </div>
-                    <button className="btn btn-success btn-sm ms-1"
+                    <button className="btn btn-primary btn-sm ms-1"
                         onClick={props.updateExpense}>
                         Update
                     </button>

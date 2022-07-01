@@ -12,7 +12,7 @@ export default function Expenses(props) {
                     <div ClassName="card-text">
                         <h5>Cost: {props.cost / 100}</h5>
                     </div>
-                    <button className="btn btn-success btn-sm"
+                    <button className="btn btn-primary btn-sm"
                         onClick={
                             props.beginEdit
                         }
